@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library System Interface</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body style="display: block">
+    <div id="library-app">
+      <h1>Library System</h1>
+      <div id="search-section">
+        <h2>Search Book</h2>
+        <!-- input for search Book -->
+        <input type="text" id="searchInput" placeholder="Enter title book" />
+        <button id="addNewButton">Add Book</button>
+        <button id="exportButton">Export to JSON</button>
+      </div>
+
+      <div id="add-book-form"></div>
+      <!-- button for add Book -->
+      <form id="newBookForm" style="display: none">
+        <h2>Add New</h2>
+        <label for="title">Title:</label>
+        <input type="text" id="title" required /><br /><br />
+
+        <label for="author">Author:</label>
+        <input type="text" id="author" required /><br /><br />
+
+        <label for="genre">Genre:</label>
+        <select id="genre">
+          <option value="Fiction">Fiction</option>
+          <option value="Non-Fiction">Non-Fiction</option>
+          <option value="Science">Science</option>
+          <option value="History">History</option></select
+        ><br /><br />
+
+        <label for="publishedYear">Published Year:</label>
+        <input type="number" id="publishedYear" required /><br /><br />
+
+        <label for="available">Available:</label>
+        <input type="checkbox" id="available" /><br /><br />
+
+        <button type="submit">Add Book</button>
+      </form>
+    </div>
+
+    <br />
+    <!-- table for show all Book -->
+    <table id="bookTable">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Genre</th>
+          <th>Published Year</th>
+          <th>Available</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <script src="src/library.js"></script>
+    <script>
+      document
+        .getElementById("addNewButton")
+        .addEventListener("click", function () {
+          const form = document.getElementById("newBookForm");
+          form.style.display = form.style.display === "none" ? "block" : "none";
+          const heading = form.querySelector("h2");
+          heading.textContent = "Add New"; // Reset to "Add New" when showing form
+        });
+    </script>
+  </body>
+</html>
